@@ -6,14 +6,14 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install dependencies
-          working_directory: /
-          command: |
-            apt-get -y -qq update
-            apt-get -y -qq install python3.4-dev
-            curl -O https://bootstrap.pypa.io/get-pip.py
-            python3.4 get-pip.py --user
-            pip install awscli --upgrade --user
-       - run:
-	      name: upload to bucket
-          command: aws s3 cp ../mike-s-test.html s3://iwc-ci-demo
+    name: Install dependencies
+      working_directory: /
+        command: |
+          apt-get -y -qq update
+          apt-get -y -qq install python3.4-dev
+          curl -O https://bootstrap.pypa.io/get-pip.py
+          python3.4 get-pip.py --user
+          pip install awscli --upgrade --user
+      - run:
+        name: upload to bucket
+        command: aws s3 cp ../mike-s-test.html s3://iwc-ci-demo
